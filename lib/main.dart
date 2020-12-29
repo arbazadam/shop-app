@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_bloc/provider/cart_provider.dart';
+import 'package:learn_bloc/provider/order_provider.dart';
 import 'package:learn_bloc/screens/cart_screen.dart';
 import 'package:learn_bloc/screens/header.dart';
 import 'package:learn_bloc/widgets/badge.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => Products()),
         ChangeNotifierProvider(create: (ctx) => Cart()),
+        ChangeNotifierProvider(create: (ctx) => Order()),
       ],
       child: MaterialApp(
           initialRoute: ProductsOverviewScreen.routeName,

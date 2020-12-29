@@ -67,6 +67,11 @@ _items.update(productId, (existingValue) => CartItem(
   List<Map<String, CartItem>> get convertMapToList {
     return _items.values.toList();
   }
+  void clearCart()
+  {
+    _items.clear();
+    notifyListeners();
+  }
 }
 
 class CartItem {
