@@ -7,6 +7,7 @@ class Cart with ChangeNotifier {
     return {..._items};
   }
 
+//removes the particular product from cart.
   void removeFromCart(String prodId) {
     if (_items.containsKey(prodId)) {
       _items.remove(prodId);
@@ -23,7 +24,14 @@ _items.update(productId, (existingValue) => CartItem(
               title: existingValue.title,
               price: existingValue.price,
               quantity: existingValue.quantity -1));
+
+              
   }
+  if(_items[productId].quantity==0)
+              {
+                removeFromCart(productId);
+              }
+              notifyListeners();
 }
   void addItem(String productId, String title, double price, String imageUrl) {
     if (_items.containsKey(productId)) {

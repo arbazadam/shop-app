@@ -26,6 +26,7 @@ final String prodId;
 Provider.of<Cart>(context,listen: false).removeFromCart(prodId);
       },
       background: Container(
+        height: 50,
         child: Icon(
           Icons.delete,
           color: Colors.white,
