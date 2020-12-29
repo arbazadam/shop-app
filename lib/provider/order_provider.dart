@@ -9,6 +9,8 @@ class Order with ChangeNotifier {
   }
 
   void addOrder(List<CartItem> cartProducts, double totalAmount) {
+    if(cartProducts.isNotEmpty)
+    {
     _listOfOrderItems.insert(
         0,
         OrderItem(
@@ -17,6 +19,7 @@ class Order with ChangeNotifier {
             id: DateTime.now().toString(),
             dateOfOrder: DateTime.now()));
             notifyListeners();
+    }
   }
 }
 

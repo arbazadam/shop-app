@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_bloc/screens/cart_screen.dart';
+import 'package:learn_bloc/screens/orders_screen.dart';
 import 'package:learn_bloc/screens/products_overview_screen.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -25,6 +26,9 @@ class AppDrawer extends StatelessWidget {
           height: 8,
         ),
         ListTile(
+          onTap: () {
+            Navigator.of(context).pushNamed(OrdersScreen.routeName);
+          },
           title: Text('Orders'),
         ),
         ListTile(

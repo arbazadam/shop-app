@@ -3,6 +3,7 @@ import 'package:learn_bloc/provider/cart_provider.dart';
 import 'package:learn_bloc/provider/order_provider.dart';
 import 'package:learn_bloc/screens/cart_screen.dart';
 import 'package:learn_bloc/screens/header.dart';
+import 'package:learn_bloc/screens/orders_screen.dart';
 import 'package:learn_bloc/widgets/badge.dart';
 import 'package:provider/provider.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           ),
           home: ProductsOverviewScreen(),
           routes: {
+            OrdersScreen.routeName: (ctx) => OrdersScreen(),
             ProductsOverviewScreen.routeName: (ctx) => ProductsOverviewScreen(),
             ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
             CartScreen.routeName: (ctx) => CartScreen()
