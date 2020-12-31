@@ -18,7 +18,7 @@ final products = [
         'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
   ),
   Product(
-      id: 'p4',
+      id: 'p6',
       title: 'shoe',
       description: 'solid shoes for men',
       price: 75.65,

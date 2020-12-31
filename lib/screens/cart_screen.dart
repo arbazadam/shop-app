@@ -56,7 +56,7 @@ class CartScreen extends StatelessWidget {
                       },
                       child: Text(
                         'Order Now',
-                        style: TextStyle(color: Theme.of(context).accentColor),
+                        style: TextStyle(color: Theme.of(context).primaryColor),
                       ),
                     )
                   ],

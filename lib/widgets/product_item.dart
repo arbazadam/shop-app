@@ -29,9 +29,12 @@ class ProductItem extends StatelessWidget {
                 arguments: product.id,
               );
             },
-            child: Image.network(
-              product.imageUrl,
-              fit: BoxFit.cover,
+            child: Hero(
+              tag: product.id,
+                          child: Image.network(
+                product.imageUrl,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
@@ -57,18 +60,25 @@ class ProductItem extends StatelessWidget {
               Icons.shopping_cart,
             ),
             onPressed: () {
-              cart.addItem(
-                  product.id, product.title, product.price, product.imageUrl);
-              Scaffold.of(context).showSnackBar(SnackBar(
-                duration: Duration(seconds: 2),
-                content: Text('Product added to cart'),
-                action: SnackBarAction(
-                  label: 'UNDO',
-                  onPressed: () {
-                    cart.removeOne(product.id);
-                  },
-                ),
-              ));
+              if (!cart.items.containsKey(product.id)) {
+                cart.addItem(
+                    product.id, product.title, product.price, product.imageUrl);
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  duration: Duration(seconds: 2),
+                  content: Text('Product added to cart'),
+                  action: SnackBarAction(
+                    label: 'UNDO',
+                    onPressed: () {
+                      cart.removeFromCart(product.id);
+                    },
+                  ),
+                ));
+              } else {
+                Scaffold.of(context).showSnackBar(SnackBar(
+                  duration: Duration(seconds: 2),
+                  content: Text('Product already exists in the cart.'),
+                ));
+              }
             },
             color: Theme.of(context).accentColor,
           ),

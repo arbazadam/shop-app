@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 class Cart with ChangeNotifier {
   final _items = {};
 
+//Cart item is stored as a Map with product id as key and Cart item as a value.
+//Here we are returning cart items.
   Map<String, CartItem> get items {
     return {..._items};
   }
@@ -33,6 +35,8 @@ _items.update(productId, (existingValue) => CartItem(
               }
               notifyListeners();
 }
+
+//Adds item to the cart and also increases the quantity if the product already exists in the cart.
   void addItem(String productId, String title, double price, String imageUrl) {
     if (_items.containsKey(productId)) {
       _items.update(
@@ -56,14 +60,20 @@ _items.update(productId, (existingValue) => CartItem(
     notifyListeners();
   }
 
-  int get itemCount {
-    int count = 0;
-    _items.forEach((key, cartItem) {
-      count = count + cartItem.quantity;
-    });
-    return count;
+  // int get itemCount {
+  //   int count = 0;
+  //   _items.forEach((key, cartItem) {
+  //     count = count + cartItem.quantity;
+  //   });
+  //   return count;
+  // }
+
+//Returning the count of items in the cart.
+  int get itemCount{
+    return _items.length;
   }
 
+//Sums the total price of the items in cart and returns the value. //Grand total
   double get totalPrice {
     double price = 0.0;
     _items.forEach((key, cartItem) {
@@ -72,9 +82,12 @@ _items.update(productId, (existingValue) => CartItem(
     return price;
   }
 
-  List<Map<String, CartItem>> get convertMapToList {
+//Converting all the values of the map to a list.
+  List<CartItem> get convertMapToList {
     return _items.values.toList();
   }
+
+  //Clearing all the items in the cart(which is basically a map).
   void clearCart()
   {
     _items.clear();
@@ -82,6 +95,7 @@ _items.update(productId, (existingValue) => CartItem(
   }
 }
 
+//This class represents each cart item.
 class CartItem {
   final String id;
   final String title;

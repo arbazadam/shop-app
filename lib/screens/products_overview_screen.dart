@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_bloc/provider/cart_provider.dart';
 import 'package:learn_bloc/screens/cart_screen.dart';
+import 'package:learn_bloc/screens/header.dart';
 
 import 'package:learn_bloc/widgets/app_drawer.dart';
 import 'package:learn_bloc/widgets/badge.dart';
@@ -14,7 +15,7 @@ enum FilterOptions {
 }
 
 class ProductsOverviewScreen extends StatefulWidget {
-  static final routeName="/products-overview";
+  static final routeName = "/products-overview";
   @override
   _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
 }
@@ -24,7 +25,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       drawer: Drawer(
         child: AppDrawer(),
@@ -58,10 +58,9 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             ],
           ),
           Consumer<Cart>(
-            builder: (_, cart, ch) => cart.items.length==0?ch:Badge(
-              value: cart.itemCount.toString(),
-              child: ch
-            ),
+            builder: (_, cart, ch) => cart.items.length == 0
+                ? ch
+                : Badge(value: cart.itemCount.toString(), child: ch),
             child: IconButton(
                 icon: Icon(Icons.shopping_cart),
                 onPressed: () {

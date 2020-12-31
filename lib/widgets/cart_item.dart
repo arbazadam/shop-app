@@ -4,15 +4,14 @@ import 'package:provider/provider.dart';
 
 class CartItemWidget extends StatelessWidget {
   final String imageUrl;
-final String prodId;
+  final String prodId;
   String prodName;
   double prodPrice;
   int quantity;
   final String id;
 
   CartItemWidget(
-      {
-        @required this.prodId,
+      {@required this.prodId,
       @required this.prodName,
       @required this.quantity,
       @required this.id,
@@ -22,8 +21,8 @@ final String prodId;
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      onDismissed: (direction){
-Provider.of<Cart>(context,listen: false).removeFromCart(prodId);
+      onDismissed: (direction) {
+        Provider.of<Cart>(context, listen: false).removeFromCart(prodId);
       },
       background: Container(
         height: 50,
@@ -41,6 +40,24 @@ Provider.of<Cart>(context,listen: false).removeFromCart(prodId);
         child: Padding(
           padding: EdgeInsets.all(10),
           child: ListTile(
+            trailing: Container(
+              width: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                      icon: Icon(Icons.add),
+                      onPressed: () {
+                        print('yet to add functionality');
+                      }),
+                  IconButton(
+                    icon: Icon(Icons.remove),
+                    onPressed: () {},
+                    color: Theme.of(context).errorColor,
+                  )
+                ],
+              ),
+            ),
             leading: CircleAvatar(
               backgroundImage: NetworkImage(imageUrl),
             ),
